@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Lingkaran</title>
+</head>
+<body>
+
+    <label for="radiusInput">Masukkan Nilai Jari-Jari atau Diameter (Maksimal 10):</label>
+    <input type="number" id="radiusInput" placeholder="Masukkan nilai">
+    <br>
+    <button onclick="calculateCircleProperties()">Hitung</button>
+
+    <p>Hasil:</p>
+    <p id="areaResult">Luas Lingkaran: </p>
+    <p id="perimeterResult">Keliling Lingkaran: </p>
+
+    <script>
+        function calculateCircleProperties() {
+            let radiusOrDiameterInput = parseFloat(document.getElementById('radiusInput').value);
+
+            if (!isNaN(radiusOrDiameterInput) && radiusOrDiameterInput <= 10) {
+                let radius = radiusOrDiameterInput;
+                let diameter = radiusOrDiameterInput * 2;
+
+                let area = Math.PI * Math.pow(radius, 2);
+                let perimeter = 2 * Math.PI * radius;
+
+                document.getElementById('areaResult').innerText = 'Luas Lingkaran: ' + area.toFixed(2);
+                document.getElementById('perimeterResult').innerText = 'Keliling Lingkaran: ' + perimeter.toFixed(2);
+            } else {
+                alert('Masukkan nilai yang valid (Maksimal 10)!');
+            }
+        }
+    </script>
+
+</body>
+</html>
