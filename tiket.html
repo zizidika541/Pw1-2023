@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+
+        .submit-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="formValidation" class="form">
+        <label for="namaPelanggan">Nama Pelanggan:</label><br>
+        <input type="text" id="namaPelanggan" name="namaPelanggan" maxlength="30" class="input-field"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" class="input-field"><br>
+        <label for="jamKeberangkatan">Jam Keberangkatan:</label><br>
+        <input type="time" id="jamKeberangkatan" name="jamKeberangkatan" class="input-field"><br>
+        <label for="tujuanKeberangkatan">Tujuan Keberangkatan:</label><br>
+        <input type="text" id="tujuanKeberangkatan" name="tujuanKeberangkatan" class="input-field"><br>
+        <label for="jumlahTiket">Jumlah Tiket:</label><br>
+        <input type="number" id="jumlahTiket" name="jumlahTiket" min="1" max="10" class="input-field"><br><br>
+        <input type="submit" value="Submit" class="submit-button">
+    </form> 
+    
+    <div id="error-message" class="error-message"></div>
+
+    <script>
+        const form = document.getElementById('formValidation');
+        const errorMessageContainer = document.getElementById('error-message');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const namaPelanggan = form.namaPelanggan.value;
+            const email = form.email.value;
+            const jamKeberangkatan = form.jamKeberangkatan.value;
+            const tujuanKeberangkatan = form.tujuanKeberangkatan.value;
+            const jumlahTiket = form.jumlahTiket.value;
+
+            errorMessageContainer.innerHTML = '';
+
+            if (!namaPelanggan) {
+                displayErrorMessage('Nama pelanggan harus diisi');
+                return;
+            }
+
+            if (!email) {
+                displayErrorMessage('Email harus diisi');
+                return;
+            }
+
+            if (!jamKeberangkatan) {
+                displayErrorMessage('Jam keberangkatan harus diisi');
+                return;
+            }
+
+            if (!tujuanKeberangkatan) {
+                displayErrorMessage('Tujuan keberangkatan harus diisi');
+                return;
+            }
+
+            if (!jumlahTiket || jumlahTiket < 1 || jumlahTiket > 10) {
+                displayErrorMessage('Jumlah tiket harus diisi dengan bilangan bulat antara 1-10');
+                return;
+            }
+
+            const formData = `
+                Nama Pelanggan: ${namaPelanggan}
+                Email: ${email}
+                Jam Keberangkatan: ${jamKeberangkatan}
+                Tujuan Keberangkatan: ${tujuanKeberangkatan}
+                Jumlah Tiket: ${jumlahTiket}
+            `;
+
+            const pre = document.createElement('pre');
+            pre.textContent = formData;
+            document.body.appendChild(pre);
+
+            alert('Data berhasil dikirim');
+        });
+
+        function displayErrorMessage(message) {
+            const errorMessage = document.createElement('div');
+            errorMessage.textContent = message;
+            errorMessageContainer.appendChild(errorMessage);
+
+            setTimeout(() => {
+                errorMessage.remove();
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
