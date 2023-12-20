@@ -1,108 +1,40 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Gallery Wishlist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.21.0/font/bootstrap-icons.css">
+    <title>Halaman Login</title>
 </head>
 <body>
-    <header>
-        <h1>Selamat Datang di My Gallery Wishlist</h1>
-    </header>
-
-    <main>
-        <section>
-            <h2>Profil Pembuat</h2>
-            <ul>
-                <li>Nama : Daffa Andika Putra Setiawan</li>
-                <li>Email : andikadafa39@gmail.com</li>
-                <li>LinkedIn:
-                    <a href="https://www.linkedin.com/in/zizi-dika-1a4255293/
-                    ">Linkedin!</a>
-            </ul>
-        </section>
-            <h2>Deskripsi My Gallery Wishlist</h2>
-            <p>Ini adalah halaman web Gallery yang menampilkan daftar kota idaman saya yang ada di Indonesia. Kota atau daerah ini
-               memiliki keindahan alam, budaya, sejarah, dan kenangan unik yang tidak semua kota memilikinya</p>
-            <h2>Foto Kota Faforit</h2>
-            <img src="c:\Users\ZIZI DIKA\Downloads\5f607051f339b.jpg"
-                 alt="kota Jakarta"
-                 style="width:300px; height:200px;">
-            <img src="c:\Users\ZIZI DIKA\Downloads\Riversiderestaurant.jpg"
-                 alt="Kota Palembang"
-                 style="width:300px; height:200px;">
-            <img src="c:\Users\ZIZI DIKA\Downloads\Masjid_agung_banten_lama.jpg"
-                 alt="Kota Serang"
-                 style="width:300px; height:200px;">
-            <img src="c:\Users\ZIZI DIKA\Downloads\Candi_Plaosan_Lor_(North_Plaosan_Temple)_from_Klaten,_Central_Java,_Indonesia_10.jpg"
-                 alt="Kota Klaten"
-                 style="width:300px; height:200px;">
-            <img src="c:\Users\ZIZI DIKA\Downloads\maxresdefault.jpg"
-                 alt="Kota Palu"
-                 style="width:300px; height:200px;">
-            <img src="c:\Users\ZIZI DIKA\Downloads\Depok.jpg"
-                 alt="Kota Depok"
-                 style="width:300px; height:200px;">
-            <img src="c:\Users\ZIZI DIKA\Downloads\Alt-Text_-PERUMAHAN-DI-CITAYAM-UNGGUL-KARENA-AKSES-DAN-INFRASTRUKTUR-SEKITAR.jpg"
-                 alt="Kota Citayam"
-                 style="width:300px; height:200px;">
-            <header>
-                <h2>Informasi Kota Favorit</h2>
-            </header>
-            <table>
-                <tr>
-                    <th>Nama Kota</th>
-                    <th>Ikon Kota</th>
-                    <th>Jumlah Penduduk</th>
-                    <th>Keunikan</th>
-                </tr>
-                <tr>
-                    <td>Jakarta</td>
-                    <td>Monas</td>
-                    <td>1o,56 juta</td>
-                    <td>Kota Kelahiran</td>
-                </tr>
-                <tr>
-                    <td>Palembang</td>
-                    <td>Jembatan Ampera</td>
-                    <td>1,843 juta</td>
-                    <td>Kota Kelahiran Ibu</td>
-                </tr>
-                <tr>
-                    <td>Serang</td>
-                    <td>Pantai Anyer</td>
-                    <td>666.600 ribu</td>
-                    <td>Kota Santri</td>
-                </tr>
-                <tr>
-                    <td>Kota Klaten</td>
-                    <td>Candi Prambanan</td>
-                    <td>1,247 juta</td>
-                    <td>Kampung Halaman</td>
-                </tr>
-                <tr>
-                    <td>Kota Palu</td>
-                    <td>Masjid Terapung</td>
-                    <td>3,2 juta</td>
-                    <td>Kota Wisata Bahari</td>
-                </tr>
-                <tr>
-                    <td>Kota Depok</td>
-                    <td>Universitas Indonesia</td>
-                    <td>2.123 juta</td>
-                    <td>Kota Kenangan</td>
-                </tr>
-                <tr>
-                    <td>Kota Citayam</td>
-                    <td>Citayam Fashion Week</td>
-                    <td>19.800 ribu</td>
-                    <td>Kota Kesayangan</td>
-                </tr>
-            </table>
-    </main>
-</body> 
-
-
-<footer>
-    <p>Copyright &copy;2023 Daffa Andika Putra Setiawan</p></footer>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="loginForm">
+                    <fieldset>
+                        <legend class="mb-3">Login Form</legend>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Nama Pengguna:</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Kata Sandi:</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">
+                                    <i id="eye-icon" class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="authenticate()">Masuk</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
 </html>
